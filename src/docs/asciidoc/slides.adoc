@@ -1,0 +1,49 @@
+= Java 8 Lambda Expressions
+Michael Gfeller <mgf@computas.com>
+2016-11-16
+:source-highlighter: coderay
+:revnumber: {project-version}
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/java]
+
+== Syntax
+
+A lambda expression is composed of three parts:
+
+|===
+|Argument List|Arrow Token|Body
+
+|(int x, int y)|->|x + y
+
+|===
+
+The body can be a _single expression_ or a _statement block_. 
+
+=== Single Expressions
+
+In the expression form, the body is simply evaluated and returned. 
+
+[source,java]
+----
+() -> 66
+(x,y) -> x + y
+(Integer x, Integer y) -> x*y
+(x) -> x > 0
+----
+
+=== Statement Blocks
+
+In the block form, the body is evaluated like a method body and a return statement returns control to the caller of the anonymous method.
+
+[source,java]
+----
+(String s) -> { System.out.println(s); } // returns nothing
+(String s) -> { 
+                 String b = s.toLowerCase(); 
+                 System.out.println(b);
+                 return b; // returns the lower case string
+              }
+----
+
+== Functional Interface
+
