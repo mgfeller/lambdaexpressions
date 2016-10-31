@@ -47,3 +47,39 @@ In the block form, the body is evaluated like a method body and a return stateme
 
 == Functional Interface
 
+* A _functional interface_ defines exactly one abstract method.
+* Its signature is called _function descriptor_.
+* Lambda expressions can provide _inline_ implementations of functional interfaces.
+* Use @FunctionalInterface to indicate the intented use as functional interface, and compile time error checking for this.
+
+=== Functional interfaces in Java 8  
+
+|===
+|Functional Interface|Function descriptor
+
+|Predicate<T>        | T -> boolean
+|Consumer<T>         | T -> void
+|Supplier<T>         | () -> T
+|Function<T,R>       | T -> R
+//|UnaryOperator<T>    | T -> T
+
+|===
+
+=== More functional interfaces in Java
+
+|===
+|Functional Interface|Function descriptor
+
+|Comparator<T>       | (T, T) -> int
+|Runnable            | () -> void
+|Callable<T>         | () -> T
+|FileFilter          | File -> boolean
+
+|===
+
+=== Only _one_ abstract method
+
+[.thumb]
+image::functional-interface-comparator-big.jpg[]
+
+Default methods (e.g. _reversed()_) and methods inherited from Object (e.g. _equals_) do not count.
