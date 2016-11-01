@@ -83,3 +83,25 @@ In the block form, the body is evaluated like a method body and a return stateme
 image::functional-interface-comparator-big.jpg[]
 
 Default methods (e.g. _reversed()_) and methods inherited from Object (e.g. _equals_) do not count.
+
+== Examples
+
+[source,java]
+----
+@FunctionalInterface
+interface CheckTrait {
+  boolean test(Animal a);
+}
+
+static CheckTrait swimmer1 = a -> a.canSwim();
+static CheckTrait swimmer2 = (Animal a) -> a.canSwim();
+static CheckTrait swimmer3 = (Animal a) -> { return a.canSwim(); };
+
+static Supplier<Animal> creator1 = () -> new Animal();
+static Supplier<Animal> creator2 = Animal::new;
+
+animals.add(creator1.get());
+animals.stream().forEach(a -> swimmer2.test(a));
+animals.stream().filter(a -> a.canSwim() && a.canHop()).count();
+animals.stream().forEach(Animal::makeSound);
+----

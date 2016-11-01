@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.mgfeller</groupId>
     <artifactId>java8-lambda-expressions</artifactId>
@@ -17,9 +17,31 @@
         <asciidoctor-revealjs.version>master</asciidoctor-revealjs.version>
     </properties>
 
+
+
     <build>
         <defaultGoal>process-resources</defaultGoal>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <encoding>utf-8</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>com.googlecode.maven-download-plugin</groupId>
                 <artifactId>download-maven-plugin</artifactId>
@@ -32,12 +54,14 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctor-revealjs.version}.zip</url>
+                            <url>
+                                https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctor-revealjs.version}.zip
+                            </url>
                             <unpack>true</unpack>
                             <outputFileName>asciidoctor-reveal.js-${asciidoctor-revealjs.version}.zip</outputFileName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                         </configuration>
-                    </execution>                    
+                    </execution>
                     <execution>
                         <id>install-revealjs</id>
                         <phase>generate-resources</phase>
@@ -50,9 +74,9 @@
                             <outputFileName>reveal.js-${revealjs.version}.zip</outputFileName>
                             <outputDirectory>${project.slides.directory}</outputDirectory>
                         </configuration>
-                    </execution>                     
+                    </execution>
                 </executions>
-            </plugin>               
+            </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -84,7 +108,9 @@
                         <configuration>
                             <outputDirectory>${project.slides.directory}</outputDirectory>
                             <backend>revealjs</backend>
-                            <templateDir>${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates/slim</templateDir>
+                            <templateDir>
+                                ${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates/slim
+                            </templateDir>
                             <sourceHighlighter>coderay</sourceHighlighter>
                             <attributes>
                                 <!-- 
@@ -93,12 +119,12 @@
                                 <revealjsdir>reveal.js-${revealjs.version}</revealjsdir>
                                 <!-- put here the reveal.js specific attributes -->
                                 <sourcedir>${basedir}/src/main/java</sourcedir>
-                                <revealjs_theme>white</revealjs_theme>
+                                <revealjs_theme>league</revealjs_theme>
                                 <revealjs_transition>linear</revealjs_transition>
                                 <project-version>${project.version}</project-version>
                             </attributes>
                         </configuration>
-                    </execution>                    
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
