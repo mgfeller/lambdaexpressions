@@ -6,6 +6,32 @@ Michael Gfeller <mgf@computas.com>
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
+== Motivation and Purpose
+
+* Functional programming is old, but has recently risen in importance.
+* Functional programming is good.
+* Well suited for concurrent and event-driven programming.
+* Java is missing functional programming capabilites.
+
+=== Lambda Expressions
+
+* Java's functional programming constructs.
+* Single most important change in Java in recent years.
+* Java's version of closures.
+
+=== Key Points
+
+* block of code with parameters that can be _passed around_
+* code that can be exuted _later_
+* can be converted to functional interfaces
+* can access effectively final variables from the enclosing scope
+
+=== Not-so-obvious Consequences
+
+* Method and constructor references refer to methods or constructors without invoking them.
+* Default and static methods can be added to interfaces that provide concrete implementations.
+* Conflicts between default methods from multiple interfaces must be resolved.
+
 == Syntax
 
 A lambda expression is composed of three parts:
