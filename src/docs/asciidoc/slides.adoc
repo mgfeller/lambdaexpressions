@@ -131,3 +131,98 @@ animals.stream().forEach(a -> swimmer2.test(a));
 animals.stream().filter(a -> a.canSwim() && a.canHop()).count();
 animals.stream().forEach(Animal::makeSound);
 ----
+
+== Questions?
+
+== Tips and best practices
+
+* Java 8 in Action. Urma, Fusco & Mycroft. Manning. 2015.
+* http://www.baeldung.com/java-8-lambda-expressions-tips[Lambda Expressions and Functional Interfaces: Tips and Best Practices] by http://www.baeldung.com/[Baeldung]
+
+=== ?
+
+. Prefer standard functional interfaces from https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html[Package java.util.function].
+. Use the @FunctionalInterface annotation, even though it is not required. It conveys _intent_ and the compiler can check the contract.
+. Don’t Overuse Default Methods in Functional Interfaces. Use sparingly, e.g. for upgrading existing interfaces without breaking backward compatibility.
+. Instantiate functional interfaces with lambda expressions instead of inner classes.
+. Use static code analysis, and the IDE, to guide you and to refactor.
+. Avoid Overloading Methods with Functional Interfaces as Parameters.
+. Carefully consider replacing (all) one-method interfaces by @FunctionalInterface and lambda expressions in your whole codebase.
+. (Same as previous!) Avoid the temptation to change your whole old codebase to @FunctionalInterface and lambda expressions for all possible existing and custom interfaces with 1 method.
+. Don’t write lambda expression code like inner class code.
+
+=== 1. Prefer Standard Functional Interfaces
+
+Prefer standard function interface from https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html[Package java.util.function] instead of 
+writing your own interface. For instance
+
+[source,java]
+----
+@FunctionalInterface
+interface lengthConcatable  {
+  Integer concatLength(String x, String y);
+}
+----
+
+is just a function that takes 2 arguments and returns a result, so 
+
+[source,java]
+----
+BiFunction<String, String, Integer> concatLength = 
+  (x, y) -> x.length() + y.length();
+----
+can be used instead.
+
+=== 2. lambda expressions instead of inner classes
+
+[source,java]
+----
+// use
+BiFunction<String, String, Integer> concatLength =
+  (x, y) -> x.length() + y.length();
+
+// instead of 
+BiFunction<String, String, Integer> concatLengthInner =
+  new BiFunction<String, String, Integer>() {
+    @Override
+    public Integer apply(String x, String y) {
+      return x.length() + y.length();
+    }
+  };
+----
+
+=== Avoid Overloading Methods with Functional Interfaces as Parameters 
+
+[source,java]
+----
+interface Foo {
+  String baz(Function<String, String> f);
+  void baz(Consumer<Integer> c);
+}
+
+// Ambiguous method call:
+public static void main(String[] args) {
+  Foo foo = new Baz();
+  foo.baz(a -> System.err.println(a));
+}
+----
+
+=== 7. Don’t write lambda expression code like inner class code.
+
+Difference between lambda expression and inner classes.
+
+Scope! (also_'Refactoring to lambda expressions')
+Lambda expressions work with enclosing scope.
+Inner classes create their own scope.
+_this_ refers to enclosing class in lambde expressions
+overriding ('shadowing') local variables is not allowed (?) in lambda expressions.
+
+== Refactoring to lambda expressions
+
+- Inspection in IntelliJ to "Interface may be annotated @FunctionalInterface"
+- Inspection in IntelliJ to "Anonymous type can be replaced with lambda"
+- Use @FunctionalInterface to denote the intention that its functionality consists of only 1 method
+- What are the differences between Lambda and Anonymous Class?
+-- this
+-- super
+-- shadowing
