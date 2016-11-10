@@ -24,16 +24,20 @@ font:
 
 title_page:
   align: left
-  background_image: cover.png
+  background_image: refcard-42-banner-small.jpg
 
 page:
+  background_color: f8f8f8
   layout: portrait
-  margin: [0.75in, 1in, 0.75in, 1in]
-  size: A4
+  margin: [0.05in, 0.05in, 0.05in, 0.05in]
+  # size: A4
+  size: [8.27in, 23.38in]
 base:
   font_family: Noto Serif
-  font_color: #333333
-  line_height_length: 17
+  font_color: #000000
+  font_size: 14
+  line_height_length: 20  
+  # line_height_length: 17
   line_height: $base_line_height_length / $base_font_size
 vertical_rhythm: $base_line_height_length
 heading:
