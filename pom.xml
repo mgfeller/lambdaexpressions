@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.mgfeller</groupId>
   <artifactId>java8-lambda-expressions</artifactId>
@@ -89,7 +90,8 @@
               <goal>wget</goal>
             </goals>
             <configuration>
-              <url>https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctor-revealjs.version}.zip</url>
+              <url>https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctor-revealjs.version}.zip
+              </url>
               <unpack>true</unpack>
               <outputFileName>asciidoctor-reveal.js-${asciidoctor-revealjs.version}.zip</outputFileName>
               <outputDirectory>${project.build.directory}</outputDirectory>
@@ -149,18 +151,21 @@
             <configuration>
               <outputDirectory>${project.slides.directory}</outputDirectory>
               <backend>revealjs</backend>
-              <templateDir>${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates/slim</templateDir>
+              <templateDir>
+                ${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates/slim
+              </templateDir>
               <sourceHighlighter>coderay</sourceHighlighter>
               <attributes>
-                <!-- 
+                <!--
                                     As we are downloading reveal.js in runtime, it sits in a nonstandard folder `reveal.js-${revealjs.version}`
                                 -->
                 <revealjsdir>reveal.js-${revealjs.version}</revealjsdir>
                 <!-- put here the reveal.js specific attributes -->
                 <sourcedir>${basedir}/src/main/java</sourcedir>
-                <revealjs_theme>league</revealjs_theme>
+                <revealjs_theme>sky</revealjs_theme>
                 <revealjs_transition>linear</revealjs_transition>
                 <project-version>${project.version}</project-version>
+                <docinfo1>true</docinfo1>
               </attributes>
             </configuration>
           </execution>
