@@ -6,6 +6,8 @@ Michael Gfeller <mgf@computas.com>
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
+image::cx-refcard-lambda-title.jpg[]
+
 == Motivation and Purpose
 
 * Functional programming is old, but has recently risen in importance.
