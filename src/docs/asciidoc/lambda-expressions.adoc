@@ -6,7 +6,9 @@ Michael Gfeller <mgf@computas.com>
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
+ifdef::refcard-pdf[]
 image::cx-refcard-lambda-title.jpg[]
+endif::refcard-pdf[]
 
 == Motivation and Purpose
 
@@ -137,7 +139,9 @@ animals.stream().filter(a -> a.canSwim() && a.canHop()).count();
 animals.stream().forEach(Animal::makeSound);
 ----
 
+ifndef::refcard-pdf[]
 == Questions?
+endif::refcard-pdf[]
 
 == Code Review Checklist
 

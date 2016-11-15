@@ -22,10 +22,6 @@ font:
   fallbacks:
     - M+ 1p Fallback
 
-title_page:
-  align: left
-  background_image: refcard-42-banner-small.jpg
-
 page:
   # background_color: #6E9EB3
   background_color: #BBEBFF

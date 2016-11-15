@@ -169,28 +169,28 @@
               </attributes>
             </configuration>
           </execution>
-          <execution>
-            <id>generate-pdf-doc-default-theme</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>process-asciidoc</goal>
-            </goals>
-            <configuration>
-              <backend>pdf</backend>
-              <outputDirectory>${project.build.directory}/generated-docs-default-theme</outputDirectory>
-              <sourceHighlighter>rouge</sourceHighlighter>
-              <doctype>article</doctype>
-              <attributes>
-                <icons>font</icons>
-                <!--notitle/-->
-                <pagenums>center</pagenums>
-                <!--toc/-->
-                <idprefix/>
-                <idseparator>-</idseparator>
-                <project-version>${project.version}</project-version>
-              </attributes>
-            </configuration>
-          </execution>
+          <!--<execution>-->
+            <!--<id>generate-pdf-doc-default-theme</id>-->
+            <!--<phase>generate-resources</phase>-->
+            <!--<goals>-->
+              <!--<goal>process-asciidoc</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<backend>pdf</backend>-->
+              <!--<outputDirectory>${project.build.directory}/generated-docs-default-theme</outputDirectory>-->
+              <!--<sourceHighlighter>rouge</sourceHighlighter>-->
+              <!--<doctype>article</doctype>-->
+              <!--<attributes>-->
+                <!--<icons>font</icons>-->
+                <!--&lt;!&ndash;notitle/&ndash;&gt;-->
+                <!--<pagenums>center</pagenums>-->
+                <!--&lt;!&ndash;toc/&ndash;&gt;-->
+                <!--<idprefix/>-->
+                <!--<idseparator>-</idseparator>-->
+                <!--<project-version>${project.version}</project-version>-->
+              <!--</attributes>-->
+            <!--</configuration>-->
+          <!--</execution>-->
           <execution>
             <id>generate-pdf-doc-custom-theme</id>
             <phase>generate-resources</phase>
@@ -199,12 +199,13 @@
             </goals>
             <configuration>
               <backend>pdf</backend>
-              <outputDirectory>${project.build.directory}/generated-docs-custom-theme</outputDirectory>
+              <outputDirectory>${project.build.directory}/generated-docs-refcard-pdf</outputDirectory>
               <sourceHighlighter>rouge</sourceHighlighter>
               <doctype>article</doctype>
               <attributes>
+                <refcard-pdf/>
                 <pdf-stylesdir>${project.basedir}/src/pdf-theme</pdf-stylesdir>
-                <pdf-style>custom</pdf-style>
+                <pdf-style>refcard</pdf-style>
                 <icons>font</icons>
                 <notitle/>
                 <pagenums/>
