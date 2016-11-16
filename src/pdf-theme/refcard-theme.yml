@@ -26,7 +26,7 @@ page:
   # background_color: #6E9EB3
   background_color: #BBEBFF
   layout: portrait
-  margin: [0.25in, 0.25in, 1.00in, 0.25in]
+  margin: [0.05in, 0.05in, 1.00in, 0.05in]
   # size: A4
   size: [8.27in, 23.38in]
 base:
